@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>报名个人中心</title>
+</head>
+<link rel="stylesheet" type="text/css" href="view/Home/Student/images/enter.css">
+<body>
+<br/><br/><br/><br/><br/><br/><br/>
+<h2><{$stu_name}> ----》 欢迎来到，湘南学院运动会个人中心</h2>
+<br/><br/>
+<table border="1" style="border:1px solid black;width:80%;font-size:25px;">
+   <tr>
+      <th>序号</th>
+      <th>名字</th>
+      <th>学号</th>
+      <th>组别（男/女）</th>
+      <th>年级、班级</th>
+      <th>项目</th>
+      <th>报名时间</th>
+      <th>操作</th>     
+   </tr>
+   <{foreach $rows as $k=>$v}>
+      <tr>
+         <td><{$v@iteration}></td>
+         <td><{$v['stu_name']}></td>
+         <td><{$v['stu_xuehao']}></td>
+         <td><{$v['stu_sex']}></td>
+         <td><{$v['grade_name']}>、<{$v['class_name']}></td>
+         <td><{$v['pro_name']}></td>
+         <td><{$v['ent_add_time']}></td>
+         <td><a href="index.php?group=Home&module=Enter&act=deleteEnter&pro_id=<{$v['pro_id']}>">取消报名</a>
+         <a href="index.php?group=Home&module=Score&act=SelectScore&pro_id=<{$v['pro_id']}>">查看成绩</a></td>
+      </tr>
+   <{/foreach}>
+</table>
+</body>
+</html>

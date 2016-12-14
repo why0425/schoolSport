@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>个人中心</title>
+</head>
+<link rel="stylesheet" type="text/css" href="view/Admin/Student/images/enter.css">
+<script type="text/javascript" src="includes/jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//添加成绩
+	$('#bt2').bind('click',func1);
+	//修改成绩
+	$('#bt1').bind('click',func2);
+} );
+//添加成绩
+function func1(){
+	$("#select").show();
+	$("#select").bind('change',function(){		   
+		win_id=$('#select').val();
+	    $.post('index.php',{'group':'Admin','module':'score','act':'insert','win_id':win_id,
+	    	  'stu_id':<{$res['stu_id']}>,'grade_id':<{$res['grade_id']}>,'class_id':<{$res['class_id']}>,
+	    	  'pro_id':<{$res['pro_id']}>,'stu_sex':"<{$res['stu_sex']}>"},function(msg){
+	    		  //传值不成功   //window.location.href="jb51.jsp?backurl="+window.location.href;
+			   			if(msg==1){
+			   				window.location.href="index.php?group=Admin&module=Student&act=search_stu&stu_id=<{$res['stu_id']}>&pro_id=<{$res['pro_id']}>";
+			   			}else{
+			   				window.location.href="index.php?group=Admin&module=Student&act=search_stu&stu_id=<{$res['stu_id']}>&pro_id=<{$res['pro_id']}>";
+			   			}   
+	    },'text');
+	});
+}
+//修改成绩
+function func2(){
+	$("#select1").show();
+	$("#select1").bind('change',function(){		   
+		win_id=$('#select1').val();
+	    $.post('index.php',{'group':'Admin','module':'Score','act':'update','win_id':win_id,
+	    	  'stu_id':<{$res['stu_id']}>,'grade_id':<{$res['grade_id']}>,'class_id':<{$res['class_id']}>,	    	  
+	    	  'pro_id':<{$res['pro_id']}>,'stu_sex':"<{$res['stu_sex']}>"},function(msg){
+	    		  
+	    		  if(msg==1){
+		   				window.location.href="index.php?group=Admin&module=Student&act=search_stu&stu_id=<{$res['stu_id']}>&pro_id=<{$res['pro_id']}>";
+		   			}else{
+		   				window.location.href="index.php?group=Admin&module=Student&act=search_stu&stu_id=<{$res['stu_id']}>&pro_id=<{$res['pro_id']}>";
+		   			}   
+	    },'text');
+	});
+}
+
+</script>
+<body>
+<br/><br/>
+<h2><{$admin}> :====>>  欢迎来到后台学生管理中心</h2>
+<br/><br/>
+<div>
+<p id="top">个人信息及成绩</p>
+   <p>姓名:<span><{$res['stu_name']}></span></p>
+   <p>学号:<span><{$res['stu_xuehao']}></span></p>
+   <p>性别:<span><{$res['stu_sex']}></span></p>
+   <p>年级:<span><{$res['grade_name']}></span></p>
+   <p>班级:<span><{$res['class_name']}></span></p>
+   <p>项目:<span><{$res['pro_name']}></span></p>
+   <p>成绩:<span id="score" style="text-decoration:none;">
+    <{if $res['sco_score']}><{$res['win_name']}><br/>
+    <input type="button" value="修改成绩" id="bt1">
+    <select name="win_id" id="select1" style="display:none;">
+          <option>【请选择名次】</option>
+         <{foreach $rows as $k=>$v}>
+           <option value="<{$k}>" 
+              <{if $k==$res['sco_score']-1}>selected="selected"
+                
+              <{/if}>
+            >
+              <{$v['win_name']}>                
+           </option>
+         <{/foreach}>
+    </select>
+       <{else}>暂无成绩 <br/>
+    <input type="button" value="添加成绩" id="bt2">
+    <select name="win_id" id="select" style="display:none;">
+          <option>【请选择名次】</option>
+         <{foreach $rows as $k=>$v}>
+           <option value="<{$k}>"><{$v['win_name']}></option>
+         <{/foreach}>
+   </select>
+    <{/if}>
+   </span></p>
+</div>
+</body>
+</html>

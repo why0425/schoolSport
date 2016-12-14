@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>成绩</title>
+</head>
+<link rel="stylesheet" type="text/css" href="view/Home/Score/images/enter.css">
+<body>
+<br/><br/><br/><br/><br/><br/><br/>
+<h2><{$stu_name}> ----》 欢迎来到，湘南学院运动会个人成绩中心</h2>
+<br/><br/>
+<div>
+<p id="top">个人信息及成绩</p>
+   <p>姓名:<span><{$res['stu_name']}></span></p>
+   <p>学号:<span><{$res['stu_xuehao']}></span></p>
+   <p>性别:<span><{$res['stu_sex']}></span></p>
+   <p>年级:<span><{$res['grade_name']}></span></p>
+   <p>班级:<span><{$res['class_name']}></span></p>
+   <p>项目:<span><{$res['pro_name']}></span></p>
+   <p>成绩:<span id="score"><{$res['win_name']}></span></p>
+</div>
+</body>
+</html>

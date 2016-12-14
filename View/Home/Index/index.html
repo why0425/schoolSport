@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>运动会首页</title>
+</head>
+<link rel="stylesheet" type="text/css" href="View/Home/Index/images/index.css" />
+<script type="text/javascript" src="includes/jquery/jquery.js"></script>
+<script type="text/javascript">
+   $(document).ready(function(){  	
+    	$('#img1').hover(dis1,dis2);
+    	function dis1(){
+    		$('#img1').attr('src','View/Home/Index/images/gg1.png');
+        }
+        function dis2(){
+        	$('#img1').attr('src','View/Home/Index/images/bj.png');
+        }      
+        //setTimeout("location.reload()",2000);
+   });
+   $(document).ready(function () {      
+       setInterval("startRequest()",1000);
+      //setInterval这个函数会根据后面定义的1000既每隔1秒执行一次前面那个函数
+      //如果你用局部刷新，要用AJAX技术
+    });    
+    function startRequest(){
+    	var mydate = new Date();
+    	var t = mydate.toLocaleString();
+        $("#time").text(t);
+    }
+</script>
+<body>
+<div class="body">
+    <div class="top1">  <span id="time"></span> 
+        <div class="stu"> 
+          <{if $stu_name}>
+	           <{$stu_name}> 你好,欢迎您来到湘南学院田径运动会报名系统！
+	           <input type="button" value="个人中心" onclick="location.href='index.php?group=Home&module=Student&act=center'">
+	           <input type="button" value="注销" onclick="location.href='index.php?group=Home&module=Index&act=delete_session'">
+           <{else}>
+               <input type="button" value="登录" onclick="location.href='index.php?group=Home&module=Index&act=login'">       
+          <{/if}>
+        
+           <input type="button" value="注册" onclick="location.href='index.php?group=Home&module=Student&act=insert'">
+           <input type="button" value="管理员" onclick="location.href='index.php?group=Admin&module=Index&act=Login'">
+          
+        </div>   
+    </div>
+    <div  class="top2">
+       <img src="View/Home/Index/images/bj.png" id="img1" width="93%" height="380px">
+    </div>
+    <div class="msg">
+       <marquee scrollamount='5' direction="left">公告：欢迎来到湘南学院校运会报名系统。。。。。   本次校运会的时间为2016年11月1日----2016年11月3日</marquee>
+    </div>
+    <div class="main">
+       <div class="project">
+         <h2>本次运动会的项目</h2>
+          <div class="gundong">
+           <{foreach $rows as $k=>$v}>
+           <b><{$v['pro_name']}></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
+           <{/foreach}> 
+           <br/>(注：每人只能最多报两项，每项最多可参加20人)
+          </div>
+       </div>
+       <div class="project1">
+         <h2><{$stu_sex}>子组的项目</h2>
+          <div class="gundong">
+           <{foreach $rows as $k=>$v}>
+           <p><a href="#"><{$v['pro_name']}></a> (注：每人只能最多报两项，每项最多可参加20人)
+           <input type="button" value="报名" onclick="location.href='index.php?group=Home&module=Project&act=join&pro_id=<{$v['pro_id']}>'"></p>
+           <{/foreach}>
+          </div>
+       </div>
+       
+    </div>
+<div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+*{margin:0px;padding:0px;text-align:center;}
+body{background: url(admin-bj.png) no-repeat fixed top;background-size:100% 100%;}
+input{width:100px;}
+table{margin:0 auto;}

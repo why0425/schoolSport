@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>登录页面</title>
+<link rel="stylesheet" type="text/css" href="view/Home/Index/images/login.css">
+</head>
+<body>
+<div id="login">
+<h3>用户登录表</h3>
+<form action="index.php" method="post">
+姓名：<input type="text" name="stu_name">&nbsp;【<span id="name">请输入您的姓名</span>】<br/><br/>
+密码：<input type="password" name="stu_pwd">&nbsp;【<span id="pwd">请输入您的密码</span>】<br/><br/>
+<input type="hidden" name="group" value="Home">
+<input type="hidden" name="module" value="index">
+<input type="hidden" name="act" value="checkLogin">
+<input type="submit" value="登录">
+<input type="reset" value="重置">
+
+
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+@CHARSET "UTF-8";
+*{margin:0px;padding:0px;text-align:center;}
+body{background: url(1.jpg) no-repeat fixed ;filter:alpha(opacity=70);background-size:100% 100%;}
+table{margin:0 auto;}
